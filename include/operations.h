@@ -6,4 +6,7 @@ double sub(double a, double b);
 double mult(double a, double b);
 double div(double a, double b);
 
+double power(double base, double exponent);
+double squareRoot(double number);
+
 #endif
