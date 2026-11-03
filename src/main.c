@@ -1,13 +1,28 @@
 #include <stdio.h>
 #include "operations.h"
 
+void banner(){
+    printf("\n");
+    printf("░█▀▀░█▀█░█░░░█▀▀░█░█░█░░░█▀█░█▀▄░█▀█░█▀▄░█▀█\n");
+    printf("░█░░░█▀█░█░░░█░░░█░█░█░░░█▀█░█░█░█░█░█▀▄░█▀█\n");
+    printf("░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░▀▀░░▀▀▀░▀░▀░▀░▀\n");
+    printf("\n");
+}
+
+void clearScreen() {
+    printf("\033[2J\033[H");
+}
+
 int main(){
     int menu;
+    int continuar;
     double resultado;
     double num1, num2;
 
     do{
-        printf("\n===CALCULADORA===\n");
+        clearScreen();
+        banner();
+        printf("\n===CALCULADORA v1.0===\n");
 
         printf("1 - Soma\n");
         printf("2 - Subtração\n");
@@ -15,7 +30,7 @@ int main(){
         printf("4 - Divisão\n");
         printf("5 - Sair\n");
 
-        printf("Escolha uma operação\n");
+        printf("Escolha uma operação: ");
         scanf("%d", &menu);
 
         if(menu == 5){
@@ -55,6 +70,20 @@ int main(){
                 printf("Opção inválida! Digite novamente. \n");
         }
 
+                printf("\n=== O QUE DESEJA FAZER? ===\n");
+                printf("1 - Realizar outra operacao\n");
+                printf("2 - Finalizar programa\n");
+
+                printf("Escolha: ");
+                scanf("%d", &continuar);
+
+            if (continuar == 2) {
+                clearScreen();
+                printf("\nFinalizando calculadora...\n");
+                break;
+            }
+
     }while(menu != 5);
+    
     return 0;
 }
