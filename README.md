@@ -76,13 +76,13 @@ calculadora/
 ### 1. Clone o repositório
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/Rohy20/Calculadora_C.git
 ```
 
 ### 2. Entre na pasta
 
 ```bash
-cd calculadora
+cd Calculadora_C
 ```
 
 ### 3. Compile o projeto
