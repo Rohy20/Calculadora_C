@@ -1,4 +1,4 @@
-# 🧮 CALCULADORA (beta v1.2)
+# 🧮 CALCULADORA V1.2
 
 <p align="center">
   **Uma calculadora interativa desenvolvida em C, com operações matemáticas básicas e avançadas diretamente pelo terminal.**
@@ -37,7 +37,7 @@ Na versão **1.2**, foram implementadas melhorias na navegação, um novo menu d
 - Opção para retornar ao menu principal.
 - Interface executada diretamente no terminal.
 
-## 🆕 Novidades da versão 
+## 🆕 Novidades da versão 1.2
 
 - Implementação de um novo menu para operações avançadas.
 - Adição da operação de módulo (valor absoluto).
@@ -123,5 +123,5 @@ Este projeto tem como objetivo aprofundar conhecimentos em linguagem C, exploran
 <p align="center">
   Desenvolvido por <strong>Rohy Maia</strong> 💻
   <br>
-  **Versão Beta**
+  **Versão 1.2**
 </p>
