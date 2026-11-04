@@ -120,3 +120,8 @@ Este projeto tem como objetivo aprofundar conhecimentos em linguagem C, exploran
 - [ ] Melhorias na experiência de navegação.
 
 ---
+<p align="center">
+  Desenvolvido por <strong>Rohy Maia</strong> 💻
+  <br>
+  **Versão 1.2**
+</p>
