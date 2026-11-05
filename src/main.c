@@ -1,9 +1,12 @@
 #include <stdio.h>
-#include "operations.h"
-#include "advanced.h"
 #include <math.h>
 
-void banner(){
+#include "operations.h"
+#include "advanced.h"
+#include "main_menu.h"
+#include "advanced_menu.h"
+
+void banner(void) {
     printf("\n");
     printf("░█▀▀░█▀█░█░░░█▀▀░█░█░█░░░█▀█░█▀▄░█▀█░█▀▄░█▀█\n");
     printf("░█░░░█▀█░█░░░█░░░█░█░█░░░█▀█░█░█░█░█░█▀▄░█▀█\n");
@@ -11,159 +14,201 @@ void banner(){
     printf("\n");
 }
 
-void clearScreen() {
+void clearScreen(void) {
     printf("\033[2J\033[H");
 }
 
-int main(){
+int main(void) {
     int menu;
     int continuar;
+    int opAvancada;
+
     double resultado;
     double num1, num2;
 
-    do{
+    do {
         clearScreen();
         banner();
-        printf("\n===CALCULADORA v1.1===\n");
 
-        printf("1 - Soma\n");
-        printf("2 - Subtração\n");
-        printf("3 - Multiplicação\n");
-        printf("4 - Divisão\n");
-        printf("5 - Operações Avançadas\n");
-        printf("6 - Sair\n");
+        menu = main_menu();
 
-        printf("Escolha uma operação: ");
-        scanf("%d", &menu);
+        if (menu == -1) {
+            printf("\nEntrada inválida! Digite um número.\n");
+            printf("Pressione ENTER para continuar...");
+            getchar();
+            continue;
+        }
 
-        if(menu == 6){
-            printf("Saindo...\n");
+        if (menu == 6) {
+            printf("\nSaindo da calculadora...\n");
             break;
         }
 
         if (menu < 1 || menu > 6) {
-        printf("Opcao invalida!\n");
-        continue;
-    }
+            printf("\nOpção inválida! Escolha entre 1 e 6.\n");
+            printf("Pressione ENTER para continuar...");
+            getchar();
+            continue;
+        }
 
-        switch(menu){
+        switch (menu) {
+
             case 1:
-                printf("Digite um numero: ");
+                printf("\nDigite um número: ");
                 scanf("%lf", &num1);
 
-                printf("Digite outro numero: ");
+                printf("Digite outro número: ");
                 scanf("%lf", &num2);
 
                 resultado = sum(num1, num2);
+
                 printf("\nResultado da soma: %.15g\n", resultado);
                 break;
-            case 2: 
-                printf("Digite um numero: ");
+
+            case 2:
+                printf("\nDigite um número: ");
                 scanf("%lf", &num1);
 
-                printf("Digite outro numero: ");
+                printf("Digite outro número: ");
                 scanf("%lf", &num2);
 
                 resultado = sub(num1, num2);
+
                 printf("\nResultado da subtração: %.15g\n", resultado);
                 break;
+
             case 3:
-                printf("Digite um numero: ");
+                printf("\nDigite um número: ");
                 scanf("%lf", &num1);
 
-                printf("Digite outro numero: ");
+                printf("Digite outro número: ");
                 scanf("%lf", &num2);
 
                 resultado = mult(num1, num2);
+
                 printf("\nResultado da multiplicação: %.15g\n", resultado);
                 break;
+
             case 4:
-                printf("Digite um numero: ");
+                printf("\nDigite um número: ");
                 scanf("%lf", &num1);
 
-                printf("Digite outro numero: ");
+                printf("Digite outro número: ");
                 scanf("%lf", &num2);
 
                 resultado = div(num1, num2);
-                printf("Resultado da divisão: %.15g\n", resultado);
+
+                printf("\nResultado da divisão: %.15g\n", resultado);
                 break;
+
             case 5:
                 clearScreen();
-                printf("=== Operações Avançadas ===\n");
-                printf("1 - Potência\n");
-                printf("2 - Raiz Quadrada\n");
-                printf("3 - Porcentagem\n");
-                printf("4 - Módulo\n");
-                printf("5 - Inversão\n");
-                printf("0 - Voltar ao menu principal\n");
-                printf("Escolha uma operação: ");
-                int opAvancada;
-                scanf("%d", &opAvancada);
 
-                if (menu == 5 && opAvancada == 0) {
+                opAvancada = advanced_menu();
+
+                if (opAvancada == -1) {
+                    printf("\nEntrada inválida! Digite um número.\n");
+                    printf("Pressione ENTER para continuar...");
+                    getchar();
+                    break;
+                }
+
+                if (opAvancada == 0) {
                     continue;
                 }
 
-                switch(opAvancada){
-                    case 0:
-                        printf("Voltando ao menu principal...\n");
-                        break;
+                switch (opAvancada) {
+
                     case 1:
-                        printf("Digite a base: ");
+                        printf("\nDigite a base: ");
                         scanf("%lf", &num1);
+
                         printf("Digite o expoente: ");
                         scanf("%lf", &num2);
+
                         resultado = power(num1, num2);
+
                         printf("\nResultado da potência: %.15g\n", resultado);
                         break;
+
                     case 2:
-                        printf("Digite um numero: ");
+                        printf("\nDigite um número: ");
                         scanf("%lf", &num1);
+
                         resultado = squareRoot(num1);
+
                         printf("\nResultado da raiz quadrada: %.15g\n", resultado);
                         break;
+
                     case 3:
-                        printf("Digite o numero: ");
+                        printf("\nDigite o número: ");
                         scanf("%lf", &num1);
+
                         printf("Digite a porcentagem: ");
                         scanf("%lf", &num2);
+
                         resultado = percentage(num1, num2);
+
                         printf("\nResultado da porcentagem: %.15g\n", resultado);
                         break;
+
                     case 4:
-                        printf("Digite um numero: ");
+                        printf("\nDigite um número: ");
                         scanf("%lf", &num1);
+
                         resultado = fabs(num1);
+
                         printf("\nResultado do módulo: %.15g\n", resultado);
                         break;
+
                     case 5:
-                        printf("Digite um numero: ");
+                        printf("\nDigite um número: ");
                         scanf("%lf", &num1);
-                        resultado = 1.0 / num1;
-                        printf("\nResultado da inversão: %.15g\n", resultado);
+
+                        if (num1 == 0) {
+                            printf("\nNão é possível inverter zero!\n");
+                        } else {
+                            resultado = 1.0 / num1;
+
+                            printf("\nResultado da inversão: %.15g\n", resultado);
+                        }
                         break;
+
                     default:
-                        printf("Opção inválida! Digite novamente. \n");
+                        printf("\nOpção inválida!\n");
+                        break;
                 }
+
                 break;
+
             default:
-                printf("Opção inválida! Digite novamente. \n");
+                printf("\nOpção inválida!\n");
+                break;
         }
 
-                printf("\n=== O QUE DESEJA FAZER? ===\n");
-                printf("1 - Realizar outra operacao\n");
-                printf("2 - Finalizar programa\n");
+        printf("\n=== O QUE DESEJA FAZER? ===\n");
+        printf("1 - Realizar outra operação\n");
+        printf("2 - Finalizar programa\n");
 
-                printf("Escolha: ");
-                scanf("%d", &continuar);
+        printf("\nEscolha: ");
 
-            if (continuar == 2) {
-                clearScreen();
-                printf("\nFinalizando calculadora...\n");
-                break;
+        if (scanf("%d", &continuar) != 1) {
+            printf("\nEntrada inválida!\n");
+
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {
             }
 
-    }while(menu != 6);
-    
+            continuar = 1;
+        }
+
+        if (continuar == 2) {
+            clearScreen();
+            printf("\nFinalizando calculadora...\n");
+            break;
+        }
+
+    } while (1);
+
     return 0;
 }
